@@ -41,21 +41,20 @@ db.mongoose
     process.exit();
   });
 
-// add express json middleware
-app.use(express.static(path.join(__dirname, "/src/build")));
-app.use(express.json());
-
 // test Routes
-app.get("/", (req, res) => res.json({ aplication_name: "The Accounter" }));
+app.get("/test", (req, res) => res.json({ aplication_name: "The Accounter" }));
+
+// routes
+require("./app/routes/auth.routes")(app);
+require("./app/routes/user.routes")(app);
 
 // files routes
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname + "/src/build/index.html"));
 // });
 
-// routes
-require("./app/routes/auth.routes")(app);
-require("./app/routes/user.routes")(app);
+// add express json middleware
+app.use(express.static(path.join(__dirname, "/src/build")));
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
