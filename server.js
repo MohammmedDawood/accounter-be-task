@@ -4,8 +4,6 @@ const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path");
 
-const dbConfig = require("./app/config/db.config");
-
 const app = express();
 
 // parse requests of content-type - application/json
@@ -28,7 +26,7 @@ const db = require("./app/models");
 const Role = db.role;
 
 db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+  .connect(db.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -37,7 +35,7 @@ db.mongoose
     initial();
   })
   .catch((err) => {
-    console.error("Connection error", err);
+    console.error("Cannot connect to the database!", err);
     process.exit();
   });
 
@@ -55,6 +53,9 @@ require("./app/routes/user.routes")(app);
 
 // add express json middleware
 app.use(express.static(path.join(__dirname, "/src/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/src/build/index.html"));
+});
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
