@@ -4,6 +4,7 @@ const search = new SerpApi.GoogleSearch(
 );
 
 exports.userBoard = (req, res) => {
+  console.log("User Board");
   res.status(200).send("User Authrized.");
 };
 
@@ -16,8 +17,8 @@ exports.userSearch = (req, res) => {
       location: "Austin, TX",
     },
     (result) => {
-      // console.log(result.knowledge_graph["title"]);
-      // console.log(result.knowledge_graph["description"]);
+      console.log(result.knowledge_graph["title"]);
+      console.log(result.knowledge_graph["description"]);
       if (result) {
         res.status(200).send({
           keyword: req.query.keyword,

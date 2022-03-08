@@ -51,11 +51,8 @@ require("./app/routes/user.routes")(app);
 //   res.sendFile(path.join(__dirname + "/src/build/index.html"));
 // });
 
-// add express json middleware
+// files routes
 app.use(express.static(path.join(__dirname, "/src/build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/src/build/index.html"));
-});
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
