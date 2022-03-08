@@ -12,7 +12,7 @@ Runs the NPM package installer to install packages.
 
 ### `npm run server`
 
-Runs the app in the development mode.\
+Runs the app in the development mode using nodemon.\
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
 ### `npm start`
