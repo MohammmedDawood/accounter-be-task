@@ -45,6 +45,7 @@ app.get("/test", (req, res) => res.json({ aplication_name: "The Accounter" }));
 // routes
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
+require("./app/routes/SearchResult.routes")(app);
 
 // files routes
 // app.get("*", (req, res) => {

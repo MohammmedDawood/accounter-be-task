@@ -11,6 +11,7 @@ db.url = dbConfig.url;
 
 db.user = require("./user.model");
 db.role = require("./role.model");
+db.searchResults = require("./searchResult.model");
 
 db.ROLES = ["user"];
 
